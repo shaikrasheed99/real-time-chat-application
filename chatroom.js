@@ -32,4 +32,8 @@ class Chatroom {
                             });
                         });
     };
+
+    updateUsername = (username) => {
+        this.username = username
+    };
 }
