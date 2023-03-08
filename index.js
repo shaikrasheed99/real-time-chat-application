@@ -2,6 +2,7 @@ const chatList = document.querySelector(".chat-list");
 const addChatForm = document.querySelector(".new-chat");
 const updateUsernameForm = document.querySelector(".new-name");
 const updateMessage = document.querySelector(".update-message");
+const chatRooms = document.querySelector(".chat-rooms");
 
 const defaultRoom = "general";
 const defaultUsername = "Anonymous";
@@ -34,6 +35,19 @@ updateUsernameForm.addEventListener("submit", (event) => {
     }, 3000);
 });
 
-chatroom.getChats((data) => {
-    chatUi.render(data);
-})
+chatRooms.addEventListener('click', (event) => {
+    if (event.target.tagName === "BUTTON") {
+        chatUi.clear();
+        const room = event.target.getAttribute('id');
+        chatroom.updateRoom(room);
+        loadChats();
+    }
+});
+
+const loadChats = () => {
+    chatroom.getChats((data) => {
+        chatUi.render(data);
+    });
+}
+
+loadChats();
