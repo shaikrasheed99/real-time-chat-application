@@ -19,4 +19,8 @@ class ChatUI {
 
         this.list.innerHTML += messageTemplate;
     };
+
+    clear = () => {
+        this.list.innerHTML = '';
+    }
 }
