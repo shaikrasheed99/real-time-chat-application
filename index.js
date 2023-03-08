@@ -1,5 +1,7 @@
 const chatList = document.querySelector(".chat-list");
 const addChatForm = document.querySelector(".new-chat");
+const updateUsernameForm = document.querySelector(".new-name");
+const updateMessage = document.querySelector(".update-message");
 
 const defaultRoom = "general";
 const defaultUsername = "Anonymous";
@@ -16,6 +18,20 @@ addChatForm.addEventListener("submit", (event) => {
         .catch((error) => {
             console.log("Error is: ", error);
         });
+});
+
+updateUsernameForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const username = updateUsernameForm.name.value.trim();
+    updateUsernameForm.reset();
+    chatroom.updateUsername(username);
+    updateMessage.innerHTML = `
+        Your name has been updated to 
+        <span class="text-info fs-4 text-capitalize">${username}</span> !!
+    `;
+    setTimeout(() => {
+        updateMessage.innerText = '';
+    }, 3000);
 });
 
 chatroom.getChats((data) => {
