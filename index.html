@@ -55,5 +55,22 @@
                 <div class="update-message text-center my-4 fs-5"></div>
             </form>
         </div>
+
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-app.js""></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-firestore.js""></script>
+        <script>
+            const firebaseConfig = {
+              apiKey: "AIzaSyA9el5BMqQl9R5JhAAz75f9poD58NPEwCI",
+              authDomain: "practice-cbc9b.firebaseapp.com",
+              projectId: "practice-cbc9b",
+              storageBucket: "practice-cbc9b.appspot.com",
+              messagingSenderId: "413960864621",
+              appId: "1:413960864621:web:7528e96d11b62993c85064",
+              measurementId: "G-JH7XP7E8TC"
+            };
+          
+            firebase.initializeApp(firebaseConfig);
+            const database = firebase.firestore();
+        </script>
     </body>
 </html>
