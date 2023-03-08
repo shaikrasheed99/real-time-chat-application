@@ -4,10 +4,13 @@ const updateUsernameForm = document.querySelector(".new-name");
 const updateMessage = document.querySelector(".update-message");
 const chatRooms = document.querySelector(".chat-rooms");
 
+const chatUi = new ChatUI(chatList);
+
 const defaultRoom = "general";
 const defaultUsername = "Anonymous";
-const chatroom = new Chatroom(defaultRoom, defaultUsername);
-const chatUi = new ChatUI(chatList);
+const usernameFromLocalStorage = localStorage.username;
+const username = usernameFromLocalStorage ? usernameFromLocalStorage : defaultUsername;
+const chatroom = new Chatroom(defaultRoom, username);
 
 addChatForm.addEventListener("submit", (event) => {
     event.preventDefault();
