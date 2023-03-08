@@ -18,5 +18,18 @@ class Chatroom {
 
         const response = await this.chats.add(chat);
         return response;
-    }
+    };
+
+    getChats = async (callback) => {
+        this.unsub = this.chats
+                        .where("room", "==", this.room)
+                        .orderBy("created_at")
+                        .onSnapshot((snapshot) => {
+                            snapshot.docChanges().forEach((change) => {
+                                if (change.type === "added") {
+                                    callback(change.doc.data());
+                                }
+                            });
+                        });
+    };
 }
